@@ -5,7 +5,8 @@ module.exports = {
   mode: 'development',
   // entry可支持配置多入口
   entry: {
-    bundle: './src/index.js'
+    index: './src/index.js',
+    login: './src/login.js'
   },
   output: {
     path: path.resolve(__dirname, './dist'),
@@ -42,13 +43,15 @@ module.exports = {
         // 定义打包后的 dist里的入口html文件
         filename: 'index.html',
         // 定义打包参照的 模板文件
-        template: './src/index.html'
+        template: './src/index.html',
+        chunks: ['index'],
       }),
     new htmlWebpackPlugin({
       // 定义打包后的 dist里的入口html文件，可以配置多个
       filename: 'login.html',
       // 定义打包参照的 模板文件
-      template: './src/login.html'
+      template: './src/login.html',
+      chunks: ['login'],
     }),
       new webpack.ProvidePlugin({
         // 定义全局变量，如第三方库的别名
