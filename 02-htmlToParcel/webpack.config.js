@@ -1,7 +1,9 @@
 const path = require("path");
 const webpack = require("webpack");
-const htmlWebpackPlugin = require("html-webpack-plugin");
-const copyWebpackPlugin = require("copy-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
 module.exports = {
   mode: "development",
   devServer: {
@@ -28,7 +30,7 @@ module.exports = {
       // 识别打包css文件
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       // 识别打包图片文件
       {
@@ -48,14 +50,14 @@ module.exports = {
     ],
   },
   plugins: [
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       // 定义打包后的 dist里的入口html文件
       filename: "index.html",
       // 定义打包参照的 模板文件
       template: "./src/index.html",
       chunks: ["index"],
     }),
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       // 定义打包后的 dist里的入口html文件，可以配置多个
       filename: "login.html",
       // 定义打包参照的 模板文件
@@ -67,11 +69,15 @@ module.exports = {
       $: "jquery",
       jQuery: "jquery",
     }),
-    new copyWebpackPlugin({
+    new CopyWebpackPlugin({
       patterns: [{
         from: path.resolve(__dirname, './src/img'),
         to: path.resolve(__dirname, 'dist/img')
       }]
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style/[name].css',
+      chunkFilename: 'style/[name].chunk.css'
     })
   ],
 };
