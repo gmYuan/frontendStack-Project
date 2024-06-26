@@ -1,0 +1,32 @@
+# 思考文档
+
+1 @vue/compiler-sfc; vue-template-compiler; vue-loader分别是什么，有怎么作用
+
+2 
+
+
+
+## 实现步骤
+
+Q1: 如何实现在原生项目中，引入并使用Vue  <br/>
+A:
+
+S1 安装Vue及其相关依赖：vue;  @vue/compiler-sfc;  vue-template-compiler; vue-loader
+
+S2 创建Vue的入口文件：JS入口文件main.js + Vue入口文件App.vue + HTML入口文件public/index.html
+
+S3 配置webpck.vue.config.js，包括：
+  - entry： 引入public/index.html
+  - output: 输出dist
+  - module: 配置vue-loader
+
+  - plugin: 配置vueLoaderPlugin，具体参考 [Vue Loader官网](https://vue-loader.vuejs.org/zh/guide/#%E6%89%8B%E5%8A%A8%E8%AE%BE%E7%BD%AE)
+
+  - devServer: 本地环境配置
+  - optimization
+  - mode
+  - devtool
+  
+S4 配置npm scripts命令，用于定义开发/打包 使用的配置文件
+
+S5 
