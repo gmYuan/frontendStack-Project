@@ -1,9 +1,7 @@
 import Vue from 'vue';
-import App from './App.vue'
-import router from './router/index.js'
+import App from '../Home.vue'
 
 const app = new Vue({
-  router,
   render: h => h(App),
 }).$mount('#app')
 

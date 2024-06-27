@@ -2,7 +2,7 @@
 
 1 @vue/compiler-sfc; vue-template-compiler; vue-loader分别是什么，有怎么作用
 
-2 
+2 vueLoaderPlugin是什么作用，为什么需要引入和实例化
 
 
 
@@ -29,4 +29,39 @@ S3 配置webpck.vue.config.js，包括：
   
 S4 配置npm scripts命令，用于定义开发/打包 使用的配置文件
 
-S5 
+
+
+Q2: 如何实现在原生项目中，使用Vue进行SPA配置开发  <br/>
+A:
+
+S1 APP作为vue入口文件，一般要负责
+  - 子组件的引入
+  - 一般需要配合Vue-Router的<router-view />使用
+
+S2 main.js作为构建文件主入口，一般要负责
+  - 引入 vmRouter实例 <== 需要创建vmRouter实例的 路由注册文件router.js
+
+S3 子组件的开发，根据template/script/style进行模块化
+
+S4 页面间的跳转，通过this.$router上的方法 来实现
+
+
+
+
+Q3: 如何实现在原生项目中，使用Vue进行MPA配置开发  <br/>
+A:
+
+1 为什么需要有MPA开发：
+  - 因为SPA在打包后只会生成一个html页面，不利于SEO
+  - 所以通过多页面开发MPA,生成多页html文件，从而实现SEO优化
+
+2 如何配置 MPA开发
+  S1 创建多个entryJS文件， 每个enrtyJs文件内部，都会创建新的Vue实例，作为Vue的入口js文件
+  S2.1 在webpack配置文件里，配置多个entry文件，从而生成多个dist/xxxjs文件，分别被不同打包html页面引用
+  S2.2 在webpack配置文件里，配置多个模板输出（其源模板可以都是 public/index.html），从而生成多个打包的html文件
+ 
+  S3 多个页面之间的跳转 也不能用router.push，而是通过网页之间的loaction跳转方法
+  S4 创建npm scripts命令，用于开发和打包
+
+
+

@@ -46,7 +46,8 @@ module.exports = {
 
   // entry可支持配置多入口
   entry: {
-    main: path.resolve(__dirname, "../src/main.js"),
+    home: path.resolve(__dirname, "../src/mpa/home.js"),
+    login: path.resolve(__dirname, "../src/mpa/login.js"),
   },
   output: {
     path: path.resolve(__dirname, "../dist"),
@@ -93,11 +94,19 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       // 定义打包后的 dist里的入口html文件
-      filename: "index.html",
+      filename: "home.html",
       // 定义打包参照的 模板文件
       template: path.resolve(__dirname, "../public/index.html"),
       //  "./src/index.html",
-      chunks: ["main"],
+      chunks: ["home"],
+    }),
+    new HtmlWebpackPlugin({
+      // 定义打包后的 dist里的入口html文件
+      filename: "login.html",
+      // 定义打包参照的 模板文件
+      template: path.resolve(__dirname, "../public/index.html"),
+      //  "./src/index.html",
+      chunks: ["login"],
     }),
     new webpack.ProvidePlugin({
       // 定义全局变量，如第三方库的别名
