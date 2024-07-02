@@ -541,18 +541,19 @@ import './js/nav';
 
 
 // 引入首页依赖的CSS
-import './css/public.css'
 import './css/index.css'
+import { useRouter } from 'vue-router';
 
 export default {
-  methods: {
-    jumpToLogin()  {
-      // spa跳转方式
-      // this.$router.push('/login')
-
-      // mpa跳转方式
-      window.location.href = '/login.html'
+  setup() {
+    const router = useRouter()
+    const jumpToLogin = () => {
+      router.push('/login')
     }
+    return {
+      jumpToLogin
+    }
+
   },
 }
 </script>
