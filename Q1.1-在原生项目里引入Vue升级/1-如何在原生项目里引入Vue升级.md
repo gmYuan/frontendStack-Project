@@ -7,13 +7,20 @@ Q1 如何在原生项目中引入Vue进行开发
 
 A: </br>
 
+其核心 实现思路是: 
+  - 安装vue相关依赖
+  - 创建依赖实例的 入口文件
+  - webpack配置 entry + output + module + plugin
+  - 通过 npm scripts 指定执行 不同环境的配置文件
+
+
 1 实现前提是 该原生项目已配置 Webpack打包相关配置内容，这一步的具体实现，可以参考 [前端工程化- 在原生项目里引入Webpack配置- todo](todo)
 
 2.1 在项目中引入Vue,安装Vue及相关依赖:
   - vue
-  - @vue/compiler-sfc
-  - vue-loader
+  - vue-loader4
   - vue-template-compiler
+  - @vue/compiler-sfc
 
 2.2 创建Vue的入口文件: 
   - JS入口文件 main.js:  创建Vue的 根vm实例，挂载到#app的 dom节点下
@@ -59,6 +66,12 @@ Q3: 如何实现在原生项目中，使用Vue进行MPA配置开发
 
 A: <br/>
 
+其核心 实现思路是: 
+  - 多个作为entry的 vue实例文件，即每个页面都会创建一个单独的 vue实例
+  - webpack 配置多个模板输出 output文件，从而生成多个 单独页面
+  - 通过 npm scripts 指定执行 不同环境的配置文件
+
+
 1 为什么需要有MPA开发:
   - 因为SPA在打包后只会生成一个html页面，不利于SEO
   - 所以通过多页面开发MPA,生成多页html文件，从而实现SEO优化
@@ -100,7 +113,25 @@ A: <br/>
 
 # 二 拓展问题答疑
 
-1 @vue/compiler-sfc; vue-template-compiler; vue-loader分别是什么，有怎么作用
+Q1 vue-loader是什么，有什么作用
+
+
+
+
+
+
+@vue/compiler-sfc; vue-template-compiler; 什么，有怎么作用
+
+
+
+
+
+
+
+
+
+
+
 
 2 vueLoaderPlugin是什么作用，为什么需要引入和实例化
 
