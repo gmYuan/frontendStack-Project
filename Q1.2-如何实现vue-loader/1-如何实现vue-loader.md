@@ -1,6 +1,11 @@
 
 实现流程/步骤：
 
+
+具体实现代码，参见[P1.2-mini-vue-loader](todo)
+
+
+
 1 webpack.config.js里配置 .vue文件的module.rules + new vueLoaderPlugin()
 
 2 npm scripts?==> webpack.config.js==> new vueLoaderPlugin()==>

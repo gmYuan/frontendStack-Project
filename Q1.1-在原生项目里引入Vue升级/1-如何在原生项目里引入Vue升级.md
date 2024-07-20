@@ -13,6 +13,8 @@ A: </br>
   - webpack配置 entry + output + module + plugin
   - 通过 npm scripts 指定执行 不同环境的配置文件
 
+具体实现代码，参见[P1.1-htmlToParcel](todo)
+
 
 1 实现前提是 该原生项目已配置 Webpack打包相关配置内容，这一步的具体实现，可以参考 [前端工程化- 在原生项目里引入Webpack配置- todo](todo)
 
